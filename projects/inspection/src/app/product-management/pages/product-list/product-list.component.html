@@ -26,8 +26,13 @@
     class="material"
     [rows]="productManagementService.displayedProducts"
     [count]="productManagementService.displayedProducts.length"
-    [rowHeight]="'auto'"
-    default
+    [footerHeight]="50"
+    rowHeight="auto"
+    [scrollbarH]="true"
+    [limit]="3"
+    [count]="productManagementService.displayedProducts.length"
+    [offset]="currentPage"
+    (page)="onPage($event)">
   >
   <ngx-datatable-column [name]="'::Id' |abpLocalization">
     <ng-template let-rowIndex="rowIndex" ngx-datatable-cell-template>
@@ -61,12 +66,14 @@
      <!-- Actions Column -->
   <ngx-datatable-column name="Actions" [sortable]="false" >
     <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-      <button (click)="onEdit(row.id)" class="btn btn-primary btn-sm m-1">
+     <div class="actions d-flex">
+      <button (click)="onEdit(row.id)" class="btn btn-primary btn-sm ">
         {{"::Edit" |abpLocalization}}
       </button>
       <button (click)="onDelete(row, rowIndex)" class="btn btn-danger btn-sm ">
         {{"::Delete" |abpLocalization}}
       </button>
+     </div>
     </ng-template>
   </ngx-datatable-column>
   </ngx-datatable>

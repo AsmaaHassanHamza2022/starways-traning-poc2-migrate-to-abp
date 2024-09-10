@@ -39,6 +39,7 @@ export default class ProductListComponent implements OnInit {
     // backdrop:'static',
     centered:true
   }
+  currentPage = 0;
   constructor(
     public readonly list: ListService,
     public productManagementService: ProductsManagementService,
@@ -85,6 +86,10 @@ export default class ProductListComponent implements OnInit {
     this.editedProductId=productId;
     this.onOpenModal(true);
 
+  }
+  onPage(event: any) {
+    this.currentPage = event.offset;
+    // Handle pagination logic, such as loading the correct page of data
   }
 
   onDelete(product: IProduct, index: number) {
