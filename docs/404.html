@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-critters-container>
+  <head>
+    <meta charset="utf-8">
+    <title>Inspection</title>
+    <base href="/starways-traning-poc2-migrate-to-abp/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+      #lp-page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        user-select: none;
+        z-index: 9999999;
+        background: #7e8082;
+        transition: background 0.3s ease-out;
+      }
+
+      #lp-page-loader:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: calc(50% - 20px);
+        top: calc(50% - 20px);
+        width: 40px;
+        height: 40px;
+        border: 4px solid #fff;
+        opacity: 0.7;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  <link rel="stylesheet" href="bootstrap-icons.f118e5e094da67ca.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="bootstrap-icons.f118e5e094da67ca.css"></noscript><link rel="stylesheet" href="ngx-datatable-index.d0d07548685a5a69.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="ngx-datatable-index.d0d07548685a5a69.css"></noscript><style>@charset "UTF-8"</style><link rel="stylesheet" href="ngx-datatable-icons.36aa12023c4951ea.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="ngx-datatable-icons.36aa12023c4951ea.css"></noscript><link rel="stylesheet" href="ngx-datatable-material.b7ed9ad5826347be.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="ngx-datatable-material.b7ed9ad5826347be.css"></noscript><link rel="stylesheet" href="fontawesome-all.min.8e2e07be53e027c6.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fontawesome-all.min.8e2e07be53e027c6.css"></noscript><link rel="stylesheet" href="fontawesome-v4-shims.min.0050c1d8d2323282.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fontawesome-v4-shims.min.0050c1d8d2323282.css"></noscript><style>:root{--lpx-theme-light-bg:url(/assets/images/login/login-bg-img-light.svg);--lpx-theme-dim-bg:url(/assets/images/login/login-bg-img-dim.svg);--lpx-theme-dark-bg:url(/assets/images/login/login-bg-img-dark.svg)}</style><link rel="stylesheet" href="styles.6bf67cad0fd505c1.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.6bf67cad0fd505c1.css"></noscript></head>
+  <body>
+    <app-root></app-root>
+    <div id="lp-page-loader"></div>
+  <script src="runtime.c93a7e6e11b0d2f5.js" type="module"></script><script src="polyfills.a4399678503966bc.js" type="module"></script><script src="main.54af40e51cd25b32.js" type="module"></script></body>
+</html>
