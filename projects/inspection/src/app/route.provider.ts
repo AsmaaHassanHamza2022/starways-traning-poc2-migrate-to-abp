@@ -15,6 +15,13 @@ function configureRoutes(routes: RoutesService) {
         order: 1,
         layout: eLayoutType.application,
       },
+      {
+        path:'/Products-Management',
+        name:'Products Management',
+        iconClass: 'fas fa-home',
+        order: 1,
+        layout: eLayoutType.application,
+      }
     ]);
   };
 }
