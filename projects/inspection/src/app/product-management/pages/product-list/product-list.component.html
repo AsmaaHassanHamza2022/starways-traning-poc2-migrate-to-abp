@@ -1,7 +1,7 @@
 <abp-page [title]="'::Our product List' | abpLocalization">
   <div class="add-action d-flex align-items-center justify-content-end my-3">
     <button class="btn btn-primary" (click)="onOpenModal()">
-      {{"::Add New Product" |abpLocalization}}
+      {{ '::Add New Product' | abpLocalization }}
     </button>
   </div>
   <div class="filters my-3">
@@ -13,16 +13,14 @@
       (clearFilter)="onClearFilter()"
     ></app-filters>
   </div>
-  
-  <ng-container *ngIf="productManagementService.displayedProducts.length ;else NODate">
+
+  <ng-container *ngIf="productManagementService.displayedProducts.length; else NODate">
     <ng-container [ngTemplateOutlet]="Table"></ng-container>
   </ng-container>
-  
 </abp-page>
 
 <ng-template #Table>
-
-  <ngx-datatable
+  <!-- <ngx-datatable
     class="material"
     [rows]="productManagementService.displayedProducts"
     [count]="productManagementService.displayedProducts.length"
@@ -32,50 +30,63 @@
     [limit]="3"
     [count]="productManagementService.displayedProducts.length"
     [offset]="currentPage"
-    (page)="onPage($event)">
+    (page)="onPage($event)"
+    >
+  > -->
+  <ngx-datatable
+    class="material"
+    [list]="list"
+    [rows]="productManagementService.displayedProducts"
+    [count]="productManagementService.totalCount"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [scrollbarH]="true"
+    [limit]="list.maxResultCount"
+    [offset]="list.page - 1"
+    (page)="onPage($event)"
   >
-  <ngx-datatable-column [name]="'::Id' |abpLocalization">
-    <ng-template let-rowIndex="rowIndex" ngx-datatable-cell-template>
-      {{ rowIndex+1 }}
-    </ng-template>
-  </ngx-datatable-column>
-    <ngx-datatable-column [name]="'::Product Name' |abpLocalization">
+    <ngx-datatable-column [name]="'::Id' | abpLocalization">
+      <ng-template let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        {{ rowIndex + 1 }}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [name]="'::Product Name' | abpLocalization">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{ row.name }}
       </ng-template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column [name]="'::Product Price'|abpLocalization">
+    <ngx-datatable-column [name]="'::Product Price' | abpLocalization">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{ row.price | currency }}
       </ng-template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column [name]="'::Product Category'|abpLocalization">
+    <ngx-datatable-column [name]="'::Product Category' | abpLocalization">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{ row.category }}
       </ng-template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column [name]="'::Product Create Date'|abpLocalization">
+    <ngx-datatable-column [name]="'::Product Create Date' | abpLocalization">
       <ng-template let-row="row" ngx-datatable-cell-template>
         {{ row.creationDate | date }}
       </ng-template>
     </ngx-datatable-column>
 
-     <!-- Actions Column -->
-  <ngx-datatable-column name="Actions" [sortable]="false" >
-    <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
-     <div class="actions d-flex">
-      <button (click)="onEdit(row.id)" class="btn btn-primary btn-sm ">
-        {{"::Edit" |abpLocalization}}
-      </button>
-      <button (click)="onDelete(row, rowIndex)" class="btn btn-danger btn-sm ">
-        {{"::Delete" |abpLocalization}}
-      </button>
-     </div>
-    </ng-template>
-  </ngx-datatable-column>
+    <!-- Actions Column -->
+    <ngx-datatable-column name="Actions" [sortable]="false">
+      <ng-template let-rowIndex="rowIndex" let-row="row" ngx-datatable-cell-template>
+        <div class="actions d-flex">
+          <button (click)="onEdit(row.id)" class="btn btn-primary btn-sm">
+            {{ '::Edit' | abpLocalization }}
+          </button>
+          <button (click)="onDelete(row, rowIndex)" class="btn btn-danger btn-sm">
+            {{ '::Delete' | abpLocalization }}
+          </button>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
   </ngx-datatable>
 </ng-template>
 
@@ -85,10 +96,11 @@
   </div>
 </ng-template>
 
-
-<abp-modal [(visible)]="isModalOpen" [options]="modalOptions" >
-    <ng-template #abpBody>
-      <app-product-form [productId]="editedProductId" (closeModal)="isModalOpen=false"></app-product-form>
-     </ng-template>
-  
+<abp-modal [(visible)]="isModalOpen" [options]="modalOptions">
+  <ng-template #abpBody>
+    <app-product-form
+      [productId]="editedProductId"
+      (closeModal)="isModalOpen = false"
+    ></app-product-form>
+  </ng-template>
 </abp-modal>

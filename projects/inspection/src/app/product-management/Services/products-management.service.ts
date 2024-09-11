@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, Injectable, signal, Signal } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject, tap } from 'rxjs';
-import { IProduct, IProductFilters } from '../utilities/models/product';
+import { IProduct, IProductFilters, IRequestQuery } from '../utilities/models/product';
 import { ICategory } from '../utilities/models/category';
+import { PagedResultDto } from '@abp/ng.core';
 
 @Injectable()
 export class ProductsManagementService {
@@ -19,20 +20,23 @@ export class ProductsManagementService {
     searchKey: signal(''),
     categoryId: signal(''),
   });
+  totalCount: number = 0;
 
   private displayedProductsList = computed(() => {
-    return this.productsListSource().filter((product) => {
+    const list = this.productsListSource().filter(product => {
       const matchesSearch = this.filters().searchKey()
-        ? product.name
-            .toLowerCase()
-            .includes(this.filters().searchKey().toLowerCase())
+        ? product.name.toLowerCase().includes(this.filters().searchKey().toLowerCase())
         : true;
       const matchesCategory = this.filters().categoryId()
         ? product.categoryId === this.filters().categoryId()
         : true;
-
       return matchesSearch && matchesCategory;
     });
+
+    if (!!this.filters().categoryId() || !!this.filters().searchKey()) {
+      this.totalCount = list.length;
+    }
+    return list;
   });
 
   constructor(private http: HttpClient) {
@@ -43,34 +47,40 @@ export class ProductsManagementService {
     if (!!this.categoriesList$()?.length) {
       return of(this.categoriesList$());
     }
-    return this.http
-      .get<ICategory[]>(`${this.apisBasePath}/categories.json`)
-      .pipe(
-        tap((res) => {
-          this.categoriesList$.set(res);
-        })
-      );
-  }
-  getProducts(): Observable<IProduct[]> {
-    if (this.productsList?.length) {
-      // this.displayedProductsList.set(this.productsList);
-      return of();
-    }
-    return this.http.get<IProduct[]>(`${this.apisBasePath}/products.json`).pipe(
-      tap((res) => {
-        if (res.length) {
-          this.productsListSource.set(res);
-          // this.displayedProductsList.set(res);
-          localStorage.setItem('Products', JSON.stringify(res));
-        }
+    return this.http.get<ICategory[]>(`${this.apisBasePath}/categories.json`).pipe(
+      tap(res => {
+        this.categoriesList$.set(res);
       })
     );
   }
+  getProducts(query: IRequestQuery): Observable<PagedResultDto<IProduct>> {
+      this.searchOnProducts(query.filter);
+    
+    // if (this.productsList?.length) {
+    //   // this.displayedProductsList.set(this.productsList);
+    //   return of();
+    // }
+    return this.http
+      .get<PagedResultDto<IProduct>>(`${this.apisBasePath}/products.json`)
+      .pipe(
+        tap(res => {
+          if (res.items.length) {
+            const slicedList = res.items.slice(
+              query.skipCount > 0 ? query.skipCount - 1 : query.skipCount,
+              query.skipCount + query.maxResultCount
+            );
+            this.productsListSource.set(slicedList);
+            // this.displayedProductsList.set(res);
+            localStorage.setItem('Products', JSON.stringify(slicedList));
+            debugger;
+            this.totalCount = res.totalCount;
+          }
+        })
+      );
+  }
 
   getProductById(productId: string): Observable<IProduct | null> {
-    const targetProduct = this.productsList?.find(
-      (product) => product.id === productId
-    );
+    const targetProduct = this.productsList?.find(product => product.id === productId);
     if (!!targetProduct) {
       return of(targetProduct);
     }
@@ -87,7 +97,7 @@ export class ProductsManagementService {
 
   updateProduct(product: IProduct, productId: string): Observable<boolean> {
     const updatedProductIndex = this.productsList.findIndex(
-      (product) => product.id === productId
+      product => product.id === productId
     );
     if (updatedProductIndex > -1) {
       this.productsList[updatedProductIndex] = product;
@@ -153,9 +163,7 @@ export class ProductsManagementService {
 
   rehydrateDataFromLocalStorage() {
     if (!this.productsList.length) {
-      this.productsListSource.set(
-        JSON.parse(localStorage.getItem('Products')!)
-      );
+      this.productsListSource.set(JSON.parse(localStorage.getItem('Products')!));
     }
   }
 
