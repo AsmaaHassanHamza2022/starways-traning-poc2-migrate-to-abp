@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { ControlValidatorComponent } from '../../../shared/components/control-validator/control-validator.component';
 import { ToasterService } from '@abp/ng.theme.shared';
 import { SharedModule } from '../../../shared/shared.module';
+import { alphanumericValidator } from '../../../shared/utilities/custom-validators';
 // import { NgxValidateCoreModule } from '@ngx-validate/core';
 
 
@@ -55,7 +56,7 @@ export default class ProductFormComponent implements OnInit {
 
   initForm() {
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.maxLength(30)]],
+      name: ['', [Validators.required, Validators.maxLength(30),alphanumericValidator()]],
       price: ['', [Validators.required,Validators.min(1)]],
       categoryId: [null, [Validators.required]],
     });

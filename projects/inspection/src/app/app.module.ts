@@ -58,6 +58,7 @@ import { VALIDATION_BLUEPRINTS } from "@ngx-validate/core";
       useValue: {
         ...DEFAULT_VALIDATION_BLUEPRINTS,
         required: "::oops, Please not let the field empty :(",
+        alphanumeric:"Invalid Input ,Entered data must be alphanumeric"
       },
     },
     APP_ROUTE_PROVIDER,
