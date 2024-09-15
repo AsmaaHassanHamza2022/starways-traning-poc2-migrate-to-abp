@@ -1,6 +1,6 @@
 import { CoreModule } from '@abp/ng.core';
 import { SettingManagementConfigModule } from '@abp/ng.setting-management/config';
-import { ThemeSharedModule } from '@abp/ng.theme.shared';
+import { DEFAULT_VALIDATION_BLUEPRINTS, ThemeSharedModule } from '@abp/ng.theme.shared';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +22,8 @@ import { FeatureManagementModule } from '@abp/ng.feature-management';
 import { AbpOAuthModule } from '@abp/ng.oauth';
 import { ThemeLeptonXModule } from '@volosoft/abp.ng.theme.lepton-x';
 import { SideMenuLayoutModule } from '@volosoft/abp.ng.theme.lepton-x/layouts';
+import { VALIDATION_BLUEPRINTS } from "@ngx-validate/core";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,14 +46,30 @@ import { SideMenuLayoutModule } from '@volosoft/abp.ng.theme.lepton-x/layouts';
     OpeniddictproConfigModule.forRoot(),
     TextTemplateManagementConfigModule.forRoot(),
     SettingManagementConfigModule.forRoot(),
-    
-    
+
     CommercialUiConfigModule.forRoot(),
     FeatureManagementModule.forRoot(),
     ThemeLeptonXModule.forRoot(),
     SideMenuLayoutModule.forRoot(),
   ],
-  providers: [APP_ROUTE_PROVIDER],
+  providers: [
+    {
+      provide: VALIDATION_BLUEPRINTS,
+      useValue: {
+        ...DEFAULT_VALIDATION_BLUEPRINTS,
+        required: "::oops, Please not let the field empty :(",
+        alphanumeric:"Invalid Input ,Entered data must be alphanumeric"
+      },
+    },
+    APP_ROUTE_PROVIDER,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+function provideAbpThemeShared(
+  arg0: any
+): import('@angular/core').Provider | import('@angular/core').EnvironmentProviders {
+  throw new Error('Function not implemented.');
+}
+
+
