@@ -72,7 +72,7 @@ export class ProductsManagementService {
             this.productsListSource.set(slicedList);
             // this.displayedProductsList.set(res);
             localStorage.setItem('Products', JSON.stringify(slicedList));
-            debugger;
+            // debugger;
             this.totalCount = res.totalCount;
           }
         })

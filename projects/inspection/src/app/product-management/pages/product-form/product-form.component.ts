@@ -14,6 +14,9 @@ import { FormModes } from '../../utilities/enums/enums';
 import { CommonModule } from '@angular/common';
 import { ControlValidatorComponent } from '../../../shared/components/control-validator/control-validator.component';
 import { ToasterService } from '@abp/ng.theme.shared';
+import { SharedModule } from '../../../shared/shared.module';
+// import { NgxValidateCoreModule } from '@ngx-validate/core';
+
 
 @Component({
   selector: 'app-product-form',
@@ -23,6 +26,8 @@ import { ToasterService } from '@abp/ng.theme.shared';
     FormsModule,
     ReactiveFormsModule,
     ControlValidatorComponent,
+    SharedModule
+    // NgxValidateCoreModule
   ],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss',
