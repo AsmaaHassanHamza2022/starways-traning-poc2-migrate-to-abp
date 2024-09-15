@@ -1,3 +1,4 @@
+import { PagedAndSortedResultRequestDto } from "@abp/ng.core";
 import { WritableSignal } from "@angular/core";
 
 export interface IProduct {
@@ -12,4 +13,8 @@ export interface IProduct {
 export interface IProductFilters{
   categoryId:WritableSignal<string>,
   searchKey:WritableSignal<string>
+}
+
+export interface IRequestQuery extends PagedAndSortedResultRequestDto {
+  filter:string
 }

@@ -35,6 +35,7 @@ export default class ProductListComponent implements OnInit {
   selectedCategory: string = '';
   isModalOpen: boolean = false;
   editedProductId:string;
+  searchKey:string='';
   modalOptions:any={
     // backdrop:'static',
     centered:true
@@ -45,8 +46,7 @@ export default class ProductListComponent implements OnInit {
     public productManagementService: ProductsManagementService,
     private confirmation: ConfirmationService
   ) {
-    console.log('List', list);
-    // list.hookToQuery()
+    
   }
 
   ngOnInit(): void {
@@ -61,8 +61,12 @@ export default class ProductListComponent implements OnInit {
     });
   }
   getData() {
-    this.productManagementService.getProducts().subscribe();
+    this.list.maxResultCount=5;
+    this.list.hookToQuery((query)=>{
+      return this.productManagementService.getProducts(query)
+    }).subscribe();
   }
+
   onOpenModal(isEditMode:boolean=false) {
     this.isModalOpen = true;
     if(!isEditMode){
@@ -70,8 +74,10 @@ export default class ProductListComponent implements OnInit {
     }
   }
   onSearch(event: Event) {
-    const searchKey = (event.target as HTMLInputElement).value;
-    this.productManagementService.searchOnProducts(searchKey);
+    this.list.filter= (event.target as HTMLInputElement).value;
+    //  this.searchKey = (event.target as HTMLInputElement).value;
+     this.list.get();
+    // this.productManagementService.searchOnProducts(this.searchKey);
   }
   onFilterByCategory(event: Event) {
     const categoryId = (event.target as HTMLSelectElement).value;
@@ -88,7 +94,8 @@ export default class ProductListComponent implements OnInit {
 
   }
   onPage(event: any) {
-    this.currentPage = event.offset;
+    this.list.page=event.offset+1;
+    // this.currentPage = event.offset;
     // Handle pagination logic, such as loading the correct page of data
   }
 

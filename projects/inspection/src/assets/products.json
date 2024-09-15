@@ -1,51 +1,39 @@
-[
-    {
-      "id": "cnlba0cunm0tk2flq",
-      "name": "iPhone 14",
-      "price": 999.99,
-      "category": "Electronics",
-      "categoryId": "1",
-      "creationDate": "2024-08-01"
-    },
-    {
-      "id": "cnlba0cunm0tk2fla",
-      "name": "Samsung Galaxy S23",
-      "price": 899.99,
-      "category": "Electronics",
-      "categoryId": "1",
-      "creationDate": "2024-08-03"
-    },
-    {
-      "id": "cnlba0cunm0tk2flc",
-      "name": "Men's Leather Jacket",
-      "price": 149.99,
-      "category": "Clothing",
-      "categoryId": "2",
-      "creationDate": "2024-08-10"
-    },
-    {
-      "id": "cnlba0cunm0tk2fll",
-      "name": "Women's Summer Dress",
-      "price": 79.99,
-      "category": "Clothing",
-      "categoryId": "2",
-      "creationDate": "2024-08-12"
-    },
-    {
-      "id": "cnlba0cunm0tk2flm",
-      "name": "Samsung Refrigerator",
-      "price": 1299.99,
-      "category": "Home Appliances",
-      "categoryId": "3",
-      "creationDate": "2024-08-05"
-    },
-    {
-      "id": "6",
-      "name": "LG Washing Machine",
-      "price": 899.99,
-      "category": "Home Appliances",
-      "categoryId": "3",
-      "creationDate": "2024-08-07"
-    }
+{
+  "totalCount": 33,
+  "items": [
+    { "id": "cnlba0cunm0tk2flq", "name": "iPhone 14", "price": 999.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-01" },
+    { "id": "cnlba0cunm0tk2fla", "name": "Samsung Galaxy S23", "price": 899.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-03" },
+    { "id": "cnlba0cunm0tk2flc", "name": "Men's Leather Jacket", "price": 149.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-10" },
+    { "id": "cnlba0cunm0tk2fll", "name": "Women's Summer Dress", "price": 79.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-12" },
+    { "id": "cnlba0cunm0tk2flm", "name": "Samsung Refrigerator", "price": 1299.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-05" },
+    { "id": "cnlba0cunm0tk2fln", "name": "LG Washing Machine", "price": 899.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-07" },
+    { "id": "cnlba0cunm0tk2flo", "name": "Sony Headphones", "price": 199.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-08" },
+    { "id": "cnlba0cunm0tk2flp", "name": "Nikon DSLR Camera", "price": 749.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-09" },
+    { "id": "cnlba0cunm0tk2flq", "name": "KitchenAid Mixer", "price": 299.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-13" },
+    { "id": "cnlba0cunm0tk2flr", "name": "Men's Winter Coat", "price": 199.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-14" },
+    { "id": "cnlba0cunm0tk2fls", "name": "Wireless Mouse", "price": 49.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-15" },
+    { "id": "cnlba0cunm0tk2flt", "name": "Air Fryer", "price": 129.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-16" },
+    { "id": "cnlba0cunm0tk2flu", "name": "Smart TV", "price": 799.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-17" },
+    { "id": "cnlba0cunm0tk2flv", "name": "Washing Machine Detergent", "price": 14.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-18" },
+    { "id": "cnlba0cunm0tk2flw", "name": "Men's Running Shoes", "price": 89.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-19" },
+    { "id": "cnlba0cunm0tk2flx", "name": "Women's Wool Sweater", "price": 119.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-20" },
+    { "id": "cnlba0cunm0tk2fly", "name": "Gaming Console", "price": 399.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-21" },
+    { "id": "cnlba0cunm0tk2flz", "name": "Digital Photo Frame", "price": 89.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-22" },
+    { "id": "cnlba0cunm0tk2fma", "name": "Portable Air Conditioner", "price": 499.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-23" },
+    { "id": "cnlba0cunm0tk2fmb", "name": "Robot Vacuum Cleaner", "price": 349.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-24" },
+    { "id": "cnlba0cunm0tk2fmc", "name": "Bluetooth Speaker", "price": 59.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-25" },
+    { "id": "cnlba0cunm0tk2fmd", "name": "Men's Casual Shirt", "price": 49.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-26" },
+    { "id": "cnlba0cunm0tk2fme", "name": "Women's Winter Boots", "price": 139.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-27" },
+    { "id": "cnlba0cunm0tk2fmf", "name": "Electric Kettle", "price": 29.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-08-28" },
+    { "id": "cnlba0cunm0tk2fmg", "name": "Smartwatch", "price": 249.99, "category": "Electronics", "categoryId": "1", "creationDate": "2024-08-29" },
+    { "id": "cnlba0cunm0tk2fmh", "name": "Men's Sports Jacket", "price": 159.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-30" },
+    { "id": "cnlba0cunm0tk2fmi", "name": "Women's Yoga Pants", "price": 39.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-08-31" },
+    { "id": "cnlba0cunm0tk2fmj", "name": "Electric Grill", "price": 89.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-09-01" },
+    { "id": "cnlba0cunm0tk2fmk", "name": "Digital Thermometer", "price": 19.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-09-02" },
+    { "id": "cnlba0cunm0tk2fml", "name": "Men's Leather Wallet", "price": 59.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-09-03" },
+    { "id": "cnlba0cunm0tk2fmm", "name": "Women's Handbag", "price": 89.99, "category": "Clothing", "categoryId": "2", "creationDate": "2024-09-04" },
+    { "id": "cnlba0cunm0tk2fmn", "name": "Air Purifier", "price": 199.99, "category": "Home Appliances", "categoryId": "3", "creationDate": "2024-09-05" },
+    { "id": "cnlba0cunm0tk2fmo", "name": "Smart Home Hub", "price": 149.99, "category": "Electronics", "categoryId": "1"}
   ]
+}
   
