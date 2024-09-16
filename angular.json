@@ -40,7 +40,9 @@
             ],
             "assets": [
               "projects/inspection/src/favicon.ico",
-              "projects/inspection/src/assets"
+              "projects/inspection/src/assets",
+              "projects/inspection/src/manifest.webmanifest",
+              "projects/inspection/src/manifest.webmanifest"
             ],
             "styles": [
               {
@@ -180,7 +182,9 @@
               },
               "projects/inspection/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "projects/inspection/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -196,12 +200,7 @@
                   "maximumError": "100kb"
                 }
               ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/inspection/src/environments/environment.ts",
-                  "with": "projects/inspection/src/environments/environment.prod.ts"
-                }
-              ],
+              
               "outputHashing": "all"
             },
             "development": {
@@ -243,7 +242,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/inspection/src/favicon.ico",
-              "projects/inspection/src/assets"
+              "projects/inspection/src/assets",
+              "projects/inspection/src/manifest.webmanifest",
+              "projects/inspection/src/manifest.webmanifest"
             ],
             "styles": ["projects/inspection/src/styles.scss"],
             "scripts": []

@@ -1,6 +1,6 @@
 import { Environment } from '@abp/ng.core';
 
-const baseUrl = 'http://localhost:4200';
+const baseUrl = location.origin;
 
 const oAuthConfig = {
   issuer: 'https://dev-auth-inspection.starwayseg.com/',

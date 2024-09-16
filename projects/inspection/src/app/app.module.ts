@@ -1,7 +1,7 @@
 import { CoreModule } from '@abp/ng.core';
 import { SettingManagementConfigModule } from '@abp/ng.setting-management/config';
 import { DEFAULT_VALIDATION_BLUEPRINTS, ThemeSharedModule } from '@abp/ng.theme.shared';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommercialUiConfigModule } from '@volo/abp.commercial.ng.ui/config';
@@ -23,6 +23,7 @@ import { AbpOAuthModule } from '@abp/ng.oauth';
 import { ThemeLeptonXModule } from '@volosoft/abp.ng.theme.lepton-x';
 import { SideMenuLayoutModule } from '@volosoft/abp.ng.theme.lepton-x/layouts';
 import { VALIDATION_BLUEPRINTS } from "@ngx-validate/core";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -51,6 +52,12 @@ import { VALIDATION_BLUEPRINTS } from "@ngx-validate/core";
     FeatureManagementModule.forRoot(),
     ThemeLeptonXModule.forRoot(),
     SideMenuLayoutModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     {
